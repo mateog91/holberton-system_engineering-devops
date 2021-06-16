@@ -1,0 +1,2 @@
+#!/bin/bash
+cat -n test_file_odd_lines | cut -b 5- | paste - - | cut -f 2
