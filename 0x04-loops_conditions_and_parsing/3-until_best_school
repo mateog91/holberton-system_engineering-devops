@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Function with for until
+i=0
+until [ $i -ge 10 ]
+do
+    echo "Best School"
+    ((i++))
+done
