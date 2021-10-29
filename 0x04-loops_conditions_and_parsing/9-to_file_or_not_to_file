@@ -14,19 +14,25 @@
 #         if the file is not a regular file: (nothing)
 
 filename="school"
+#fil exists
 if [ -b "$filename" ]
 then
     echo "$filename file exists"
+
+    #Empty
     if [ -s "$filename" ]
     then
         echo "$filename file is empty"
+    
     else
         echo "$filename file is not empty"
     fi
-    if [ -f "$filename is a regular file" ]
+    
+    if [ -f "$filename" ]
     then
         echo "$filename is a regular file"
     fi
+#file does not exist
 else
     echo "$filename file does not exist"
 fi
