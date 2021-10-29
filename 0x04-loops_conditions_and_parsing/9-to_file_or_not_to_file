@@ -14,8 +14,8 @@
 #         if the file is not a regular file: (nothing)
 
 filename="school"
-#fil exists
-if [ -b "$filename" ]
+#file exists
+if [ -e "$filename" ]
 then
     echo "$filename file exists"
 
