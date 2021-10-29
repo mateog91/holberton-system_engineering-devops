@@ -3,4 +3,9 @@
 # of processes whose name contain the word bash.
 # shellcheck disable=SC2009
 
-pidof bash
+lines="$(pidof bash)"
+
+for line in $lines
+do
+    echo "$line bash"
+done
