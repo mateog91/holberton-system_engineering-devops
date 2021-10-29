@@ -8,5 +8,5 @@
 LIST="$(ls)"
 for element in $LIST
 do
-    echo "$element"
+    echo "$element" | cut -d '-' -f 2-
 done
