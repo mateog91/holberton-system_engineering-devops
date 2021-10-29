@@ -2,5 +2,4 @@
 # Using your previous exercise command, write a Bash script that displays
 # shellcheck disable=SC2009
 
-ps auxf | pidof bash
-
+echo $$ bash
