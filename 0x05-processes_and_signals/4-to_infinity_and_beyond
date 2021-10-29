@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-# Write a Bash script that displays the PID, along with the process name,
-# of processes whose name contain the word bash.
-# shellcheck disable=SC2009
+# Write a Bash script that displays To infinity and beyond indefinitely. 
 
-pgrep -l bash
+while true
+do
+     echo "To infinity and beyond"
+     sleep 2
+done
