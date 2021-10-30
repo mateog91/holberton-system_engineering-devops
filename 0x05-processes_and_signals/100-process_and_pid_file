@@ -13,8 +13,9 @@ pgrep -f "$MY_ID" > my_pib
 out1()
 {
     echo "I hate the kill command"
-    out2()
+    out2
 }
+
 out2()
 {
     rm /var/run/myscript.pid
