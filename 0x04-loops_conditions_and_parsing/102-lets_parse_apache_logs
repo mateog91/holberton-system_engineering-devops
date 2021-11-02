@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Parse a apache acces logfile using awk to extract IP and HTTP_CODE
+
+awk '{print $1,$9}' apache-access.log
