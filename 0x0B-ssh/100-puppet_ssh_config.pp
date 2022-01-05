@@ -5,19 +5,15 @@
 #     Your SSH client configuration must be configured to use the private key ~/.ssh/school
 #     Your SSH client configuration must be configured to refuse to authenticate using a password
 
-file { 'puppet config':
-  include stdlib  
-    file_line { 'config file':
-      path    => '~/.ssh/school',
-      ensure  => present,
-      line = 'IdentityFile ~/.ssh/school'
-    }
+file_line { 'config file':
+  path    => '~/.ssh/school',
+  ensure  => present,
+  line => 'IdentityFile ~/.ssh/school'
+}
 
-    file_line { 'config file':
-      path    => '~/.ssh/school',
-      ensure  => present,
-      line = 'BatchMode yes'
-      match = 'BatchMode no'
-    }
-  
+file_line { 'config file':
+  path    => '~/.ssh/school',
+  ensure  => present,
+  line    => '   BatchMode yes',
+  match   => '   BatchMode no'
 }
