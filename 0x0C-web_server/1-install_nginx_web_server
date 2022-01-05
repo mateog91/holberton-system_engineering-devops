@@ -11,4 +11,4 @@ sudo ufw allow 'Nginx HTTP'
 sudo touch /var/www/htm/index.html
 echo "Hello World" | sudo tee /var/www/htm/index.html
 #restart
-sudo service nginx restart
+sudo service nginx start
