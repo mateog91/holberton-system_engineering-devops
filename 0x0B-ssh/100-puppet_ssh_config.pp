@@ -6,16 +6,14 @@
 
 #     Your SSH client configuration must be configured to use the private key ~/.ssh/school
 #     Your SSH client configuration must be configured to refuse to authenticate using a password
-
-file_line { 'config file':
+file_line { 'Privete key path':
   ensure => present,
   path   => '~/.ssh/school',
-  line   => 'IdentityFile ~/.ssh/school',
+  line   => 'IdentityFile ~/.ssh/school'
 }
 
-file_line { 'config file':
+file_line { 'Password':
   ensure => present,
   path   => '~/.ssh/school',
-  line   => '   BatchMode yes',
-  match  => '   BatchMode no'
+  line   => '   PasswordAuthentication no'
 }
