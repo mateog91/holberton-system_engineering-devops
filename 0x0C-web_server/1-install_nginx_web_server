@@ -11,4 +11,4 @@ sudo ufw allow 'Nginx HTTP'
 # change index webpage
 echo "Hello World" | sudo tee /var/www/htm/index.nginx-debian.html
 #restart
-sudo systemctl restart nginx
+sudo systemctl start nginx
