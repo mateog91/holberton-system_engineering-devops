@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Install nginx web server
 # Install nginx
+config='server_name _;\n\trewrite ^/redirect_me/$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;'
 sudo apt-get -y update
 sudo apt-get -y install nginx
 # Install firewall
@@ -8,9 +9,8 @@ sudo ufw app list
 # Listen port 80
 sudo ufw allow 'Nginx HTTP'
 # change index webpage
-sudo touch /var/www/html/index.html
+
 echo "Hello World" | sudo tee /var/www/html/index.html
-config="server_name _:\n\trewrite ^/redirect_me/$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
-sed -i "s/server_name\ _;/$config/" /etc/nginx/sites-available/default
+sudo sed -i "s|server_name\ _;|$config|g" /etc/nginx/sites-available/default
 #restart
 sudo service nginx start
