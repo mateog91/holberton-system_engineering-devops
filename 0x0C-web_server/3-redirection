@@ -11,6 +11,6 @@ sudo ufw allow 'Nginx HTTP'
 sudo touch /var/www/html/index.html
 echo "Hello World" | sudo tee /var/www/html/index.html
 config="server_name _:\n\trewrite ^/redirect_me/$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
-sed -i "s/server_name\ _;/$config/g /etc/nginx/sites-available/default"
+sed -i "s/server_name\ _;/$config/" /etc/nginx/sites-available/default
 #restart
 sudo service nginx start
