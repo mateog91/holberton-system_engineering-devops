@@ -8,9 +8,17 @@ sudo ufw app list
 # Listen port 80
 sudo ufw allow 'Nginx HTTP'
 # change index webpage
-sudo touch /var/www/html/index.html
 echo "Hello World" | sudo tee /var/www/html/index.html
-config="server_name _:\n\trewrite ^/redirect_me/$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
-sed -i "s/server_name\ _;/$config/" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/error404.html
+# Redicetions
+to_append='\\trewrite ^/redirect_me/$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;'
+search='server_name\ _;'
+file_path='/etc/nginx/sites-available/default'
+sudo sed -i "/$search/a $to_append" $file_path
+
+# for error 404
+error_append='\\terror_page 404 /error404.html;'
+sudo sed -i "/$search/a $error_append" $file_path
+
 #restart
-sudo service nginx start
+sudo service nginx restart
