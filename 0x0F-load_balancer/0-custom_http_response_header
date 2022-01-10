@@ -3,7 +3,7 @@
 #initialize variables
 search='location \/ {'
 file_path='/etc/nginx/sites-available/default'
-to_append="add_header X-Served-By $HOSTNAME"
+to_append="add_header X-Served-By $HOSTNAME;"
 # sed command to find and append the string
 sudo sed -i "/$search/a $to_append" $file_path
 # restart
