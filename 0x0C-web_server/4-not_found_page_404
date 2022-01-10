@@ -9,7 +9,6 @@ sudo ufw app list
 sudo ufw allow 'Nginx HTTP'
 # change index webpage
 echo "Hello World" | sudo tee /var/www/html/index.html
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/error404.html
 # Redicetions
 to_append='\\trewrite ^/redirect_me/$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;'
 search='server_name\ _;'
@@ -17,6 +16,9 @@ file_path='/etc/nginx/sites-available/default'
 sudo sed -i "/$search/a $to_append" $file_path
 
 # for error 404
+# change 404 html content
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/error404.html
+# append 404 html path to defalut settings in vhost path
 error_append='\\terror_page 404 /error404.html;'
 sudo sed -i "/$search/a $error_append" $file_path
 
