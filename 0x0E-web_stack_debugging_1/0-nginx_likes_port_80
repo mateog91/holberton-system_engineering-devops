@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script is fixing conexion to port 80
+# Delete default file
+rm /etc/nginx/sites-enabled/default
+# Add symlink
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+# Restart web server
+sudo service nginx restart
