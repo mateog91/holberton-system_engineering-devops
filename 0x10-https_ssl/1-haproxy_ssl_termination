@@ -35,7 +35,7 @@ defaults
 
 
 frontend myfrontend
-        #bind :80
+        bind :80
         bind *:443 ssl crt /etc/letsencrypt/live/www.thebestairbnb.tech/fullchain.pem
         default_backend myservers
 
