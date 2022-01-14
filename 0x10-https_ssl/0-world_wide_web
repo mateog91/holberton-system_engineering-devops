@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Usage ./0-world_wide_web domain subdomain
+# Output: The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
+dom=$1
+if [ "$#" -eq 2 ]
+then
+    subdom=("$2")
+else
+    subdom=("www" "lb-01" "web-01" "web-02")
+fi
+print_subdomain () {
+    for subd in "${subdom[@]}"
+    do
+        new_dom="${subd}.${dom}"
+        dom_ip=$(dig "$new_dom" +short)
+        record_type=$(dig "$new_dom" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{print $4}')
+        text="The subdomain $subd is a $record_type record and points to $dom_ip"
+        echo "$text"
+    done
+}
+
+print_subdomain
