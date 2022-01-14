@@ -7,6 +7,7 @@ global
         user haproxy
         group haproxy
         daemon
+        
 
         # Default SSL material locations
         ca-base /etc/ssl/certs
@@ -34,13 +35,20 @@ defaults
         errorfile 504 /etc/haproxy/errors/504.http
 
 
-frontend myfrontend
+frontend www-http
         bind :80
-        bind *:443 ssl crt /etc/letsencrypt/live/www.thebestairbnb.tech/fullchain.pem
+        reqadd X-Forwarded-Proto:\ http
         default_backend myservers
 
+frontend www-https
+        bind *:443 ssl crt /etc/letsencrypt/live/www.thebestairbnb.tech/fullchain.pem
+        reqadd X-Forwarded-Proto:\ https
+        acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+        use_backend letsencrypt-backend if letsencrypt-acl
+        default_backend myservers
 
 backend myservers
         balance roundrobin
+        redirect scheme https if !{ ssl_fc }
         server 3454-web-01 34.139.13.192:80 check
         server 3454-web-02 18.209.14.61:80 check
