@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run command as another user
 # stop apache
-sudo service apache2 stop
+sudo pkill -9 apache2
 # change permissions to nginx.conf so only root can modify this file
 config='/etc/nginx/nginx.conf'
 sudo chmod 644 $config
