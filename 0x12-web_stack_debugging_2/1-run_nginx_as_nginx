@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
-# Run command as another user
+# config user Nginx
 
-# stop apache
+# realse port 8080
 sudo pkill -9 apache2
-# change permissions to nginx.conf so only root can modify this file
-config='/etc/nginx/nginx.conf'
-sudo chmod 644 $config
-#change user to nginx
-newuser='user nginx;'
-sed -i "s|#user www-data;|$newuser|" $config
-# change listening port from 80 to 8080
-search='80 default_server;'
-newtext='8080 default_server;'
-file_path='/etc/nginx/sites-available/default'
-sed -i "s|$search|$newtext|" $file_path
-# restart ngninx service as ngninx user
+# variable with path to change user
+user_change="/etc/nginx/nginx.conf";
+# remove permissions of execution
+sudo chmod 644 $user_change
+# change user
+user_new="user nginx;";
+sed -i "s|#user www-data;|$user_new|" $user_change
+# variable with path to change port for listening the port 8080
+path="/etc/nginx/sites-available/default";
+# change port 80 to 8080
+sed -i "s|80 default_server|8080 default_server|" $path
+# restar service with new user Ngninx
 sudo -u nginx service nginx start
