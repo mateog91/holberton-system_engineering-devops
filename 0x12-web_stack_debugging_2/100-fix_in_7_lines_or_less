@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# config user Nginx
+sudo chmod 644 /etc/nginx/nginx.conf
+sed -i "s|#user www-data;|user nginx;|" /etc/nginx/nginx.conf
+sed -i "s|80 default_server|8080 default_server|" /etc/nginx/sites-available/default
+sudo -u nginx service nginx start
