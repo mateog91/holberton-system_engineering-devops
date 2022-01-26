@@ -9,9 +9,9 @@ sudo chmod 644 $config
 newuser='user nginx;'
 sed -i "s|#user www-data;|$newuser|" $config
 # change listening port from 80 to 8080
-search='listen 80 default_server;'
-newtext='listen 8080 default_server;'
+search='80 default_server;'
+newtext='8080 default_server;'
 file_path='/etc/nginx/sites-available/default'
 sed -i "s|$search|$newtext|" $file_path
 # restart ngninx service as ngninx user
-sudo -u nginx service nginx restart
+sudo -u nginx service nginx start
