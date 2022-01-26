@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Run command as another user
+
 # stop apache
 sudo pkill -9 apache2
 # change permissions to nginx.conf so only root can modify this file
