@@ -24,7 +24,7 @@ if __name__ == "__main__":
     import requests
     import sys
     # capture user id from input arguments
-    user_id = sys.argv[1]
+    user_id = int(sys.argv[1])
     # user_id = 2
 
     # define url
