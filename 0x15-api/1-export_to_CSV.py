@@ -15,9 +15,6 @@ Requirements:
         Second and N next lines display the title of completed tasks:
         TASK_TITLE (with 1 tabulation and 1 space before the TASK_TITLE)
 """
-from calendar import c
-from email.quoprimime import quote
-
 
 if __name__ == "__main__":
     import csv
@@ -35,12 +32,6 @@ if __name__ == "__main__":
     user_tasks_l = requests.get(
         '{}/todos?userId={}'.format(url, user_id)).json()
 
-    total_tasks = len(user_tasks_l)
-    # extract title of tasks that have been completed
-    task_titles_completed = [task.get('title')
-                             for task in user_tasks_l if task.get('completed')]
-
-    total_completed = len(task_titles_completed)
     name = user_d.get('name')
     username = user_d.get('username')
 
@@ -53,10 +44,10 @@ if __name__ == "__main__":
     ]
 
     # writing to csv file
-    with open(filename, 'w', newline="") as csvfile:
+    with open(filename, 'w') as csvfile:
         # creating a csv writer object
         csvwriter = csv.writer(csvfile, quotechar='"',
-                               quoting=csv.QUOTE_ALL, delimiter=",")
+                               quoting=csv.QUOTE_ALL)
 
         # writing the data rows
         csvwriter.writerows(rows)
