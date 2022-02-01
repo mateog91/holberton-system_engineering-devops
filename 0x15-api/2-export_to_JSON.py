@@ -38,15 +38,11 @@ if __name__ == "__main__":
 
     d = {user_id:
          [
-             {"task": task.get('title'), "completed": task.get('completed'),
-              "username": username}
-             for task in user_tasks_l
-         ]
+             {"task": task.get('title'), "completed": task.get(
+                 'completed'), "username": username}
+             for task in user_tasks_l]
          }
-    # print(d)
 
     # writing to json file
     with open(filename, 'w') as jsonfile:
-        # creating a csv writer object
-        # js = json.dumps(d)
         json.dump(d, jsonfile)
