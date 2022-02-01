@@ -52,9 +52,10 @@ if __name__ == "__main__":
     ]
 
     # writing to csv file
-    with open(filename, 'w') as csvfile:
+    with open(filename, 'w', newline="") as csvfile:
         # creating a csv writer object
-        csvwriter = csv.writer(csvfile, quotechar='"', quoting=csv.QUOTE_ALL)
+        csvwriter = csv.writer(csvfile, quotechar='"',
+                               quoting=csv.QUOTE_ALL, delimiter=",")
 
         # writing the data rows
         csvwriter.writerows(rows)
