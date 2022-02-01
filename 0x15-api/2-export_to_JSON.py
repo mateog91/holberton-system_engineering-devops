@@ -21,8 +21,7 @@ if __name__ == "__main__":
     import requests
     import sys
 
-    # user_id = int(sys.argv[1])
-    user_id = 2
+    user_id = int(sys.argv[1])
 
     # define url
     url = 'https://jsonplaceholder.typicode.com'
@@ -44,7 +43,7 @@ if __name__ == "__main__":
              for task in user_tasks_l
          ]
          }
-    print(d)
+    # print(d)
 
     # writing to json file
     with open(filename, 'w') as jsonfile:
