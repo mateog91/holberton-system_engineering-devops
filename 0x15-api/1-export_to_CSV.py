@@ -42,12 +42,13 @@ if __name__ == "__main__":
 
     total_completed = len(task_titles_completed)
     name = user_d.get('name')
+    username = user_d.get('username')
 
     # CSV TASK
     filename = "{}.csv".format(user_id)
 
     rows = [
-        [user_id, name, task.get('completed'), task.get('title')]
+        [user_id, username, task.get('completed'), task.get('title')]
         for task in user_tasks_l
     ]
 
