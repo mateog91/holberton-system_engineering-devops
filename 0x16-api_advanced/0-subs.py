@@ -18,6 +18,8 @@ def number_of_subscribers(subreddit):
     url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
     headers = {'User-Agent': 'MyHolbertonAPI/0.0.1'}
     response = requests.get(url, headers=headers)
-    content = response.json()
-    data = content['data']
-    return data.get('subscribers', 0)
+    if (response.status_code == 200):
+        content = response.json()
+        data = content['data']
+        return data.get('subscribers', 0)
+    return 0
