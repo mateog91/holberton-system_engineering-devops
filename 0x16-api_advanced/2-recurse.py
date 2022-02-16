@@ -18,9 +18,9 @@ def recurse(subreddit, hot_list=[]):
         children = content['data']['children']
         lenght = len(children)
         recurse2(hot_list, children)
-        print(hot_list)
-    else:
-        print(None)
+        return hot_list
+    
+    return None
 
 
 def recurse2(hot_list, c_list):
