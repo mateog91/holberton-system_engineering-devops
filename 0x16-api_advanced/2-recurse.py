@@ -19,7 +19,7 @@ def recurse(subreddit, hot_list=[]):
         lenght = len(children)
         recurse2(hot_list, children)
         return hot_list
-    
+
     return None
 
 
