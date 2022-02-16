@@ -5,25 +5,28 @@
 import requests
 
 
-def recurse(subreddit, hot_list=[]):
+def recurse(subreddit, hot_list=[], after=None):
     """
     prints the titles of the first 10 hot posts listed for a given subreddit.
     """
 
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     headers = {'User-Agent': 'MyHolbertonAPI/0.0.1'}
-    response = requests.get(url, headers=headers)
+    param = {'after': after}
+    response = requests.get(url, headers=headers, params=param)
+
     if (response.status_code == 200):
         content = response.json()
         children = content['data']['children']
-        lenght = len(children)
-        recurse2(hot_list, children)
+        add_list(hot_list, children)
+        after = content['data']['after']
+        if after is not None:
+            recurse(subreddit, hot_list, after)
         return hot_list
-
     return None
 
 
-def recurse2(hot_list, c_list):
+def add_list(hot_list, c_list):
     """
     Recursive function that appends to hotlists and pops from c_list
 
@@ -35,4 +38,4 @@ def recurse2(hot_list, c_list):
         return
     last = c_list.pop()
     hot_list.append(last['data']['title'])
-    recurse2(hot_list, c_list)
+    add_list(hot_list, c_list)
